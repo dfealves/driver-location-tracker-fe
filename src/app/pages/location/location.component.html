@@ -1,1 +1,9 @@
 <p>location works!</p>
+
+<div>
+    <button (click)="sendLocation()"> Send</button>
+</div>
+
+<ng-container *ngIf="error">
+{{ error | json }}
+</ng-container>

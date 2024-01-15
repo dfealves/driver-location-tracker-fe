@@ -66,12 +66,17 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "ssl": true,
+            "sslKey": "ssl/server.key",
+            "sslCert": "ssl/server.crt"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "driver-location-tracker-fe:build:production"
+              "buildTarget": "driver-location-tracker-fe:build:production"
             },
             "development": {
-              "browserTarget": "driver-location-tracker-fe:build:development"
+              "buildTarget": "driver-location-tracker-fe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "driver-location-tracker-fe:build"
+            "buildTarget": "driver-location-tracker-fe:build"
           }
         },
         "test": {

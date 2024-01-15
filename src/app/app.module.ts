@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { LocationComponent } from './pages/location/location.component';
+import { HttpClientModule } from '@angular/common/http';
 const config: SocketIoConfig = { url: 'http://localhost:3001/location', options: {}}
 
 @NgModule({
@@ -22,6 +23,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3001/location', options:
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    HttpClientModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],
