@@ -4,6 +4,10 @@
     <button (click)="sendLocation()"> Send</button>
 </div>
 
+<div>
+    <button (click)="updateLocation()">Update</button>
+</div>
+
 <ng-container *ngIf="error">
 {{ error | json }}
 </ng-container>

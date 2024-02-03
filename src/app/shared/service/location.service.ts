@@ -55,6 +55,17 @@ export class LocationService {
         console.log('Enviando localização', location);
 
         // Enviar a solicitação HTTP sem JSON.stringify
-        return this.http.post('https://192.168.0.3:3000/location', location);
+        return this.http.post('https://192.168.0.8:3000/location', location);
+    }
+
+    updateLocation(location: {
+        latitude: number,
+        longitude: number
+    }) {
+        const data = {
+            latitude: location.latitude,
+            longitude: location.longitude
+        }
+        return this.http.patch(`https://192.168.0.8:3000/location/${'65a4363cbc6fbddf92828685'}`, data)
     }
 }

@@ -42,6 +42,20 @@ export class LocationComponent implements OnInit {
         })
       })
   }
+
+  public updateLocation() {
+    alert('entrei no update');
+    this.service.updateLocation(this.location).subscribe({
+      next: ((r) => {
+        console.log('res', r)
+      }),
+      error: (e) => {
+        console.log('error', e);
+        this.error = e
+        return e
+      }
+    });
+  }
 }
 
 
