@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/shared/service/auth.service';
 import { LocationService } from 'src/app/shared/service/location.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { LocationService } from 'src/app/shared/service/location.service';
 export class LocationComponent implements OnInit {
   public location: any;
   public error: any;
-  constructor(private service: LocationService) { }
+  constructor(
+    private service: LocationService,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.location = this.service.getObservableLocation()
@@ -55,6 +59,17 @@ export class LocationComponent implements OnInit {
         return e
       }
     });
+  };
+  
+  public login(): void {
+    this.authService.login('dfealves', '*A77b89k').subscribe({
+      next: (r) => { 
+        console.log('Usuário logado com sucesso!', r)
+      },
+      error: (error) => {
+        console.error('Não foi possível efetuar o login!', error)
+      }
+    })
   }
 }
 

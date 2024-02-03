@@ -66,6 +66,6 @@ export class LocationService {
             latitude: location.latitude,
             longitude: location.longitude
         }
-        return this.http.patch(`https://192.168.0.8:3000/location/${'65a4363cbc6fbddf92828685'}`, data)
+        return this.http.patch(`https://192.168.0.8:3000/update/location/${'65a4363cbc6fbddf92828685'}`, data)
     }
 }

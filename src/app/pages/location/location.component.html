@@ -8,6 +8,8 @@
     <button (click)="updateLocation()">Update</button>
 </div>
 
+<div><button (click)="login()">Login</button></div>
+
 <ng-container *ngIf="error">
 {{ error | json }}
 </ng-container>
