@@ -1,0 +1,50 @@
+@media screen and (max-width: 480px) {
+    :host {
+        .login {
+            display: grid;
+            grid-template-rows: 0 1fr;
+            height: 100vh;
+
+            &__header {
+                grid-row: 1;
+
+                &__logo {
+                    display: flex;
+                    justify-content: baseline;
+                    align-items: center;
+                    flex-direction: column;
+                }
+            }
+
+            &__content {
+                &__title {
+                    font-weight: 500;
+                }
+
+                form {
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: center;
+                    width: 100%;
+                }
+
+                grid-row: 2;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+
+                mat-form-field {
+                    width: 80%;
+                }
+
+                button {
+                    width: 80%;
+                    padding: 30px;
+                }
+            }
+        }
+    }
+
+}

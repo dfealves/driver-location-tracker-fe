@@ -1,0 +1,22 @@
+<section class="login">
+    <header class="login__header">
+    </header>
+    <main class="login__content">
+        <img src="../../../assets/logo.svg" alt="Driver location tracker logo">
+        <h1 class="login__content__title">Driver Location Tracker </h1>
+       <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Usuário</mat-label>
+            <input formControlName="username" matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input formControlName="password" type="password" matInput>
+        </mat-form-field>
+       </form>
+        <button 
+        [disabled]="!form.valid"
+         mat-raised-button color="warn"
+         (click)="login()">Acessar</button>
+    </main>
+</section>

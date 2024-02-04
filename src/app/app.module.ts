@@ -7,6 +7,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
 import { LocationComponent } from './pages/location/location.component';
 import { HttpClientModule } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { LoginModule } from './pages/login/login.module';
+import { JwtModule } from '@auth0/angular-jwt';
 const config: SocketIoConfig = { url: 'http://localhost:3001/location', options: {}}
 
 @NgModule({
@@ -17,6 +20,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3001/location', options:
   imports: [
     BrowserModule,
     AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('access_token'),
+        allowedDomains: ['192.168.0.8:3000']
+      }
+    }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -24,9 +33,12 @@ const config: SocketIoConfig = { url: 'http://localhost:3001/location', options:
       registrationStrategy: 'registerWhenStable:30000'
     }),
     HttpClientModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    LoginModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
